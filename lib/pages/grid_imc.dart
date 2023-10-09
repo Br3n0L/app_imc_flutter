@@ -1,10 +1,10 @@
+import 'package:app_imc_flutter/repositories/imc_repository.dart';
 import 'package:flutter/material.dart';
 
 import '../models/imc_model.dart';
 
 class GridIMC extends StatefulWidget {
-  final List<ImcModel> listImc;
-  const GridIMC({super.key, required this.listImc});
+  const GridIMC({super.key});
 
   @override
   State<GridIMC> createState() => _GridIMCState();
@@ -12,6 +12,7 @@ class GridIMC extends StatefulWidget {
 
 class _GridIMCState extends State<GridIMC> {
   late double width = MediaQuery.of(context).size.width;
+  ImcRepository imcRepository = ImcRepository();
 
   int _sortColumnIndex = 0;
   bool _sortAscending = true;
@@ -166,9 +167,8 @@ class _GridIMCState extends State<GridIMC> {
   }
 
   Future<void> _deleteIMC(int data) async {
-    setState(() {
-      widget.listImc.removeWhere((element) => element.getId() == data);
-    });
+    imcRepository.deletar(data);
+    setState(() {});
   }
 
   _showAlertDelete(BuildContext context, int data) {
@@ -218,9 +218,8 @@ class _GridIMCState extends State<GridIMC> {
     );
   }
 
-  Future<List<ImcModel>> _getListIMC() {
-    return Future.delayed(const Duration(milliseconds: 10))
-        .then((value) => value = widget.listImc);
+  Future<List<ImcModel>> _getListIMC() async {
+    return await imcRepository.obterDados();
   }
 
   @override
