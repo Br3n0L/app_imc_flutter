@@ -173,7 +173,7 @@ class _GridIMCState extends State<GridIMC> {
 
   _showAlertDelete(BuildContext context, int data) {
     Widget excluirButton = SizedBox(
-      width: 100.0,
+      width: 120.0,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
         child: const Text("Excluir"),
@@ -185,7 +185,7 @@ class _GridIMCState extends State<GridIMC> {
     );
 
     Widget cancelarButton = SizedBox(
-      width: 100.0,
+      width: 120.0,
       //height: 100.0,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
